@@ -11,12 +11,13 @@ public class UserRegistration {
 	static String firstName;
 	static String lastName;
 	static String email;
+	static String phoneNumber;
 	
 	//Regex patterns
 	static String FIRST_NAME = "^[A-Z]{1}[a-z]{2,}$";
 	static String LAST_NAME = "^[A-Z]{1}[a-z]{2,}$";
 	static String EMAIL = "^[[a-z]]{1,}([._+-][0-9]{1,})*[0-9]{0,}@([0-9]|[[a-z]]){1,}[.][[a-z]]{2,4}([.][[a-z]]{2,4}){0,1}$";
-	
+	static String PHONE_NUMBER = "^(91){0,1}[7-9][0-9]{9}$";
 	public static void main(String[] args) 
 	{
 		System.out.println("Welcome to user registration program");
@@ -27,24 +28,41 @@ public class UserRegistration {
 		lastName = input .next();
 		System.out.println("Enter email");
 		email = input.next();
+		System.out.println("Enter mobile number");
+		phoneNumber = input.next();
 		
 		matchFirstName();
 		matchLastName();
 		matchEmail();
+		matchPhoneNumber();
 		
 	}
 
+	//To verify phone number
+	private static void matchPhoneNumber() 
+	{
+		Pattern p = Pattern.compile(PHONE_NUMBER);
+		Matcher m = p.matcher(phoneNumber);
+		
+		if (m.find())
+			System.out.println("Phone number is correct");
+		else
+			System.out.println("Phone number is incorrect");
+	}
+
+	//To verify email
 	private static void matchEmail() 
 	{
 		Pattern p = Pattern.compile(EMAIL);
 		Matcher m = p.matcher(email);
 		
 		if (m.find())
-			System.out.println("email is correct.");
+			System.out.println("Email is correct.");
 		else
-			System.out.println("email is incorrect.");
+			System.out.println("Email is incorrect.");
 	}
 
+	//To verify last name
 	private static void matchLastName() 
 	{
 		Pattern p = Pattern.compile(LAST_NAME);
@@ -56,6 +74,7 @@ public class UserRegistration {
 			System.out.println("Last name is incorrect.");
 	}
 
+	//To verify first name
 	private static void matchFirstName() 
 	{
 		Pattern p = Pattern.compile(FIRST_NAME);
