@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.junit.runners.Parameterized.Parameters;
+
 public class UserRegistration {
 	
 	static Scanner input = new Scanner (System.in).useDelimiter("\n");
