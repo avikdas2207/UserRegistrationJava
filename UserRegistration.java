@@ -20,9 +20,10 @@ public class UserRegistration {
 	static String LAST_NAME = "^[A-Z]{1}[a-z]{2,}$";
 	static String EMAIL = "^[[a-z]]{1,}([._+-][0-9]{1,})*[0-9]{0,}@([0-9]|[[a-z]]){1,}[.][[a-z]]{2,4}([.][[a-z]]{2,4}){0,1}$";
 	static String PHONE_NUMBER = "^(91){0,1}[7-9][0-9]{9}$";
-	static String PASSWORD = "^[0-9a-zA-Z]{8}$";
+	static String PASSWORD = "^.{8}$";
 	static String PASSWORD_2 = "[A-Z]{1,}";
 	static String PASSWORD_3 = "[0-9]{1,}";
+	static String PASSWORD_4 = "[^A-Za-z0-9]{1}";
 	
 	public static void main(String[] args) 
 	{
@@ -53,13 +54,17 @@ public class UserRegistration {
 		Pattern p = Pattern.compile(PASSWORD);
 		Pattern p2 = Pattern.compile(PASSWORD_2);
 		Pattern p3 = Pattern.compile(PASSWORD_3);
+		Pattern p4 = Pattern.compile(PASSWORD_4);
+
 
 		
 		Matcher m = p.matcher(password);
 		Matcher m2 = p2.matcher(password);
 		Matcher m3 = p3.matcher(password);
+		Matcher m4 = p4.matcher(password);
+
 		
-		if (m.find() && m2.find() && m3.find())
+		if (m.find() && m2.find() && m3.find() && m4.find())
 			System.out.println("Password is valid");
 		else
 			System.out.println("Password is invalid");
