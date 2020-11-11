@@ -7,17 +7,21 @@ import java.util.regex.Pattern;
 public class UserRegistration {
 
 	static Scanner input = new Scanner (System.in);
+	
 	//Variables
 	static String firstName;
 	static String lastName;
 	static String email;
 	static String phoneNumber;
+	static String password;
 	
 	//Regex patterns
 	static String FIRST_NAME = "^[A-Z]{1}[a-z]{2,}$";
 	static String LAST_NAME = "^[A-Z]{1}[a-z]{2,}$";
 	static String EMAIL = "^[[a-z]]{1,}([._+-][0-9]{1,})*[0-9]{0,}@([0-9]|[[a-z]]){1,}[.][[a-z]]{2,4}([.][[a-z]]{2,4}){0,1}$";
 	static String PHONE_NUMBER = "^(91){0,1}[7-9][0-9]{9}$";
+	static String PASSWORD = "^[0-9a-zA-Z]{8}$";
+	
 	public static void main(String[] args) 
 	{
 		System.out.println("Welcome to user registration program");
@@ -30,12 +34,27 @@ public class UserRegistration {
 		email = input.next();
 		System.out.println("Enter mobile number");
 		phoneNumber = input.next();
+		System.out.println("Enter password");
+		password = input.next();
 		
 		matchFirstName();
 		matchLastName();
 		matchEmail();
 		matchPhoneNumber();
+		matchPassword();
 		
+	}
+
+	//To verify password
+	private static void matchPassword() 
+	{
+		Pattern p = Pattern.compile(PASSWORD);
+		Matcher m = p.matcher(password);
+		
+		if (m.find())
+			System.out.println("Password is valid");
+		else
+			System.out.println("Password is invalid");
 	}
 
 	//To verify phone number
@@ -45,9 +64,9 @@ public class UserRegistration {
 		Matcher m = p.matcher(phoneNumber);
 		
 		if (m.find())
-			System.out.println("Phone number is correct");
+			System.out.println("Phone number is valid");
 		else
-			System.out.println("Phone number is incorrect");
+			System.out.println("Phone number is invalid");
 	}
 
 	//To verify email
@@ -57,9 +76,9 @@ public class UserRegistration {
 		Matcher m = p.matcher(email);
 		
 		if (m.find())
-			System.out.println("Email is correct.");
+			System.out.println("Email is valid.");
 		else
-			System.out.println("Email is incorrect.");
+			System.out.println("Email is invalid.");
 	}
 
 	//To verify last name
@@ -69,9 +88,9 @@ public class UserRegistration {
 		Matcher m = p.matcher(lastName);
 		
 		if (m.find())
-			System.out.println("Last name is correct.");
+			System.out.println("Last name is valid.");
 		else
-			System.out.println("Last name is incorrect.");
+			System.out.println("Last name is invalid.");
 	}
 
 	//To verify first name
@@ -81,9 +100,9 @@ public class UserRegistration {
 		Matcher m = p.matcher(firstName);
 		
 		if (m.find())
-			System.out.println("First name is correct.");
+			System.out.println("First name is valid.");
 		else
-			System.out.println("First name is incorrect.");
+			System.out.println("First name is invalid.");
 	}
 
 }
