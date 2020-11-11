@@ -22,6 +22,7 @@ public class UserRegistration {
 	static String PHONE_NUMBER = "^(91){0,1}[7-9][0-9]{9}$";
 	static String PASSWORD = "^[0-9a-zA-Z]{8}$";
 	static String PASSWORD_2 = "[A-Z]{1,}";
+	static String PASSWORD_3 = "[0-9]{1,}";
 	
 	public static void main(String[] args) 
 	{
@@ -51,11 +52,14 @@ public class UserRegistration {
 	{
 		Pattern p = Pattern.compile(PASSWORD);
 		Pattern p2 = Pattern.compile(PASSWORD_2);
+		Pattern p3 = Pattern.compile(PASSWORD_3);
+
 		
 		Matcher m = p.matcher(password);
 		Matcher m2 = p2.matcher(password);
+		Matcher m3 = p3.matcher(password);
 		
-		if (m.find() && m2.find())
+		if (m.find() && m2.find() && m3.find())
 			System.out.println("Password is valid");
 		else
 			System.out.println("Password is invalid");
