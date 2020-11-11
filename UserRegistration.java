@@ -21,6 +21,7 @@ public class UserRegistration {
 	static String EMAIL = "^[[a-z]]{1,}([._+-][0-9]{1,})*[0-9]{0,}@([0-9]|[[a-z]]){1,}[.][[a-z]]{2,4}([.][[a-z]]{2,4}){0,1}$";
 	static String PHONE_NUMBER = "^(91){0,1}[7-9][0-9]{9}$";
 	static String PASSWORD = "^[0-9a-zA-Z]{8}$";
+	static String PASSWORD_2 = "[A-Z]{1,}";
 	
 	public static void main(String[] args) 
 	{
@@ -49,9 +50,12 @@ public class UserRegistration {
 	private static void matchPassword() 
 	{
 		Pattern p = Pattern.compile(PASSWORD);
-		Matcher m = p.matcher(password);
+		Pattern p2 = Pattern.compile(PASSWORD_2);
 		
-		if (m.find())
+		Matcher m = p.matcher(password);
+		Matcher m2 = p2.matcher(password);
+		
+		if (m.find() && m2.find())
 			System.out.println("Password is valid");
 		else
 			System.out.println("Password is invalid");
